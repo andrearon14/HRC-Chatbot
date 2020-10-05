@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="jumbotron">
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label class="form-label" for="nombre">Razón social/nombre</label>
+            <input type="text" id="nombre">
+        </div>
+        <div class="form-group col-md-6">
+            <label class="form-label" for="rut">RUT</label>
+            <input type="text" id="rut">
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label class="form-label" for="direccion">Dirección</label>
+            <input type="text" id="direccion">
+        </div>
+        <div class="form-group col-md-3">
+            <label class="form-label" for="telefono">Teléfono</label>
+            <input type="text" id="telefono">
+        </div>
+        <div class="form-group col-md-3">
+            <label class="form-label" for="correo">Correo</label>
+            <input type="text" id="correo">
+        </div>
+    </div>
+    <div class="btn-group">
+        <button type="button" class="btn" id="nuevo">Nuevo</button>
+        <button type="button" class="btn" id="guardar">Guardar</button>
+        <button type="button" class="btn" id="eliminar">Eliminar</button>
+        <!--button type="button" class="btn" id="imprimir">Imprimir</button-->
+    </div>
+    <div class="form-group divsearch">
+        <input class="search" type="text" placeholder="Buscar por empresa">
+    </div>
+    <div id="datos" class="form-group">
+    </div>
+</div>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="static/form.css">
+{% endblock %}
+
+{% block scriptstart %}
+<script>
+    var empresas = {{ empresas | safe }};
+</script>
+<script src="static/js/datos_empresa.js"></script>
+{% endblock %}

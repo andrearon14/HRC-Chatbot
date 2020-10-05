@@ -1,0 +1,14 @@
+.active {
+    color: white;
+    background: #31A6FF;
+}
+
+.notification {
+    color: white;
+    background: red;
+    display: inline-block;
+    border-radius: 50%;
+    width: 1.5em;
+    text-align: center;
+    margin-left: .5em;
+}

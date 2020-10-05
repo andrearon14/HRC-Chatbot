@@ -1,0 +1,67 @@
+Más abajo estan las instrucciones de instalacción
+
+Sin embargo el programa funcionando puede ser accedido
+a traves del siguiente link (hasta fin de Mayo 2019)
+
+https://rebrand.ly/hrcbit
+
+Esta la posibilidad de reiniciar la base de datos escribiendo
+reset en el chatbot.
+
+
+IMPORTANTE
+Estos fuentes ni el link pueden ser compartidos con CutiTeam B
+porque contienen varias mejoras que se hicieron luego de la
+separación de los grupos.  A ellos ya se les paso la versión
+que teníamos en su momento.
+
+
+
+Instrucciones de instalacción
+-----------------------------
+
+1. Instalar MySQL
+
+Para la creacion base de datos se usa crearDB.sql
+Para agregar los datos de prueba se usa InitDB.sql
+Cambiar archivo config.py (estan datos de permisos para mysql ajustarlos a su proprio servidor)
+
+ 
+2. Instalar con pip install los requerimientos 
+	pip install python-dateutil
+	pip install flask
+	pip install dialogflow
+	pip install mysql-connector-python-rf
+	pip install mysql-connector-python
+	pip install python-dotenv
+
+como instalar flask
+https://www.youtube.com/watch?v=QjtW-wnXlUY
+https://galaxytechsite.wordpress.com/2017/03/21/instalacion-de-python-flask-en-windows/
+
+
+3. Configurar Dialogflow
+
+Crear nuevo Agente, lenguaje Spanish - es
+Apretar en el engranaje y Export and Import
+Darle Restore From Zip y elegir el archivo CutiTeam DialogFlow.zip
+Ir a General (del engranaje) y copiar Project ID y ponerlo en el archivo .env para el valor de DIALOGFLOW_PROJECT_ID
+Dar click en el Project ID que lleva a Google Cloud Console, elegir API y Services, Credenciales
+Crear credenciales, Clave de cuenta de servicio, elegir DialogFlow Integration del combo, dejarlo en JSON y crear
+Copiar el archivo descargado a este directorio y poner el nombre del archivo en .env para el valor de GOOGLE_APPLICATION_CREDENTIALS
+
+
+4. En linea de comando ejecutar: flask run 
+
+
+5. Usar ngrok para ser accesibles a internet
+
+Descargar de https://ngrok.com/
+Ejecutar desde linea de comando: ngrok http 5000
+
+
+6. Configurar hook en Dialogflow
+
+Ir a Fulfillment y cambiar la url para la que esta dando ngrok
+Es https://XXXX.ngrok.io/hook
+Lo que cambia es el XXXX y es necesario agregarle el hook al final

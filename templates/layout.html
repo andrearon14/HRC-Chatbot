@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>HRC</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.2.1/materia/bootstrap.min.css"/>
+    <link rel="stylesheet" href="static/navbar-fixed-left.min.css">
+    <link rel="stylesheet" href="static/layout.css">
+    {% block css %}{% endblock %}
+    <script src="static/js/jquery-3.3.1.min.js"></script>
+    <script src="static/js/docs.js"></script>
+    {% block scriptstart %}{% endblock %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.js"></script>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
+      <a href="/"><h1 style="color:white"><img src="static/img/hrc.png" style="width:70px"> HRC</h1></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+              aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav">
+          {% if usr.admin %}
+          <li class="nav-item">
+            <a class="nav-link {% if pag == 'datos_empresa' %}active{% endif %}" href="datos_empresa">Datos de Empresa</a>
+          </li>
+          {% endif %}
+          <li class="nav-item">
+            <a class="nav-link {% if pag == 'datos_empleado' %}active{% endif %}" href="datos_empleado">Datos de Empleado</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if pag == 'sugerencias' %}active{% endif %}" href="sugerencias">Sugerencias</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if pag == 'solicitudes' %}active{% endif %}" href="solicitudes">Solicitudes{% if usr.notificacion > 0 and pag != 'solicitudes' %}<div class="notification">{{ usr.notificacion }}</div>{% endif %}</a>
+          </li>
+          <div class="dropdown-divider"></div>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"><img height=60px src="static/img/{{ usr.foto }}" class="rounded-circle"> {{ usr.nombre }}{% if usr.admin %} (Admin){% endif %}</a>
+              <div class="dropdown-menu">
+                <div class="text-center">Cambiar Usuario</div>
+                {% for u in usr.lista %}
+                <a class="dropdown-item user" href="#"><img height=30px src="static/img/{{ u.foto }}" class="rounded-circle"> {{u.nombre}}</a>
+                {% endfor %}
+              </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+      {% block content %}{% endblock %}
+    </div>
+
+    <script src="static/js/layout.js"></script>
+    {% block scriptend %}{% endblock %}
+  </body>
+</html>
